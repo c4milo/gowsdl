@@ -78,7 +78,7 @@ func TestAttributeRef(t *testing.T) {
 
 	expected := `type ResponseStatus struct {
 	Status	[]struct {
-		Value	string
+		Value	string	` + "`" + `xml:",chardata"` + "`" + `
 
 		Code	string	` + "`" + `xml:"code,attr,omitempty"` + "`" + `
 	}	` + "`" + `xml:"status,omitempty"` + "`" + `

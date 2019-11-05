@@ -51,7 +51,8 @@ var typesTmpl = `
 {{end}}
 
 {{define "SimpleContent"}}
-	Value {{toGoType .Extension.Base}}{{template "Attributes" .Extension.Attributes}}
+	Value {{toGoType .Extension.Base}} ` + "`" + `xml:",chardata"` + "`" + `
+	{{template "Attributes" .Extension.Attributes}}
 {{end}}
 
 {{define "ComplexTypeInline"}}
