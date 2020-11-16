@@ -29,11 +29,16 @@ var opsTmpl = `
 		{{end}}
 	}
 
-	type {{$privateType}} struct {
-		client *soap.Client
+
+	type SOAPCaller interface {
+		CallContext(ctx context.Context, soapAction string, request, response interface{}) error
 	}
 
-	func New{{$exportType}}(client *soap.Client) {{$exportType}} {
+	type {{$privateType}} struct {
+		client SOAPCaller
+	}
+
+	func New{{$exportType}}(client SOAPCaller) {{$exportType}} {
 		return &{{$privateType}}{
 			client: client,
 		}
